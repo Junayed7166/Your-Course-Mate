@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="/style.css"/>
+    </head>
+    <body>
+
+        
+        <div class="SignUp">
+            <header id="header"><b> Your Course Mate </b></header>
+        </div>
+
+        <div class = "main">
+            <div class="fname">
+            <div><input id="FName" type="text" placeholder="Enter Your First Name"></div>
+            <div><input id="LName" type="text" placeholder="Enter Your Last Name"></div>
+            <div><input id="Dept" type="text" placeholder="Enter Your Department"></div>
+            <div><input id="EmAddress" type="text" placeholder="Enter Your Email Address"></div>
+            <div><input id="ContNumber" type="number" placeholder="Enter Your Contact Number"></div>
+            <div><input id="Password" type="password" placeholder="Enter Your Password"></div>
+            <div><button id="save">Sign Up</button></div>
+
+
+        </div>
+
+        <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+        </script>
+        
+        <script>
+            //add a click listener to the button,
+            //get input values and print in console.log
+            $('#save').click(function(){
+              let SignUp = {FName: $('#FName').val(),
+                            LName: $('#LName').val(),
+                            Dept: $('#Dept').val(),
+                            EmAddress: $('#EmAddress').val(),
+                            ContNumber: $('#ContNumber').val(),
+                            Password: $('#Password').val()}
+              console.log(SignUp.Password)
+             $.ajax({
+                 type:'POST',
+                 url:'/signUp/new',
+                 data: SignUp,
+                 success: response => {
+                     console.log(response)
+                 },
+                 error: response => {
+                     console.log(response)
+                 }
+             })
+            })
+        </script>
+            
+        </body>
+</html>
